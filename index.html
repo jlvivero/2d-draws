@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Proyect 2D</title>
+      <!-- defines format for canvas -->
+      <canvas id="myCanvas" width="1080" height="960" style="border:0px solid #d3d3d3;">
+        Your browser does not support the canvas element.
+      </canvas>
+  </head>
+  <body>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var pointX = 195;
+      var pointY = 150;
+      var rad = 90;
+
+      function generate(pointX,pointY,rad) {
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(pointX, pointY, rad, 0,2*Math.PI);
+        ctx.stroke();
+      }
+
+      function moveRight(pointX,pointY,rad) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        pointX++;
+        generate(pointX,pointY,rad);
+      }
+
+      function moveLeft(pointX,pointY,rad) {
+        pointX--;
+        generate(pointX,pointY,rad);
+      }
+
+      function moveUp(pointX,pointY,rad) {
+
+        pointY--;
+        generate(pointX,pointY,rad);
+      }
+
+      function clearCanv(){
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    </script>
+
+    <button type="button" onclick=generate(pointX,pointY,rad);>Generate</button>
+    <button type="button" onclick=pointX++>Move Right</button>
+    <button type="button" onclick=pointX-->Move Left</button>
+    <button type="button" onclick=pointY-->Move Up</button>
+    <button type="button" onclick=pointY++>Move Down</button>
+
+
+    <button type="button" onclick=clearCanv();>CLEAR????</button>
+    <!-- why aint it working mmmmmmaaaaaaaaan -->
+
+    <!-- first we draw a circle
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+      ctx.stroke();
+      that draws a circle
+
+        it's in radians????
+
+
+      it's basically arc(x,y, radius, angleStart,angleEnd) x,y is the center point, radius is obvious anglestart is 0, and angleend is 2pi, which iirc is 360
+    -->
+
+  </body>
+</html>

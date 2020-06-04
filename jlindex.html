@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+      <canvas id="myCanvas" width="1000" height="500" style="border:1px solid #d3d3d3;">
+        Your browser does not support the canvas element.
+      </canvas>
+      <form action="#" method="get" onsubmit="generate('radio', 'rotation')">
+        <label for="radio">radio: </label><br>
+        <input type="number" id="radio" name="radio" value="1"><br>
+        <label for="rotation">rotation: </label><br>
+        <input type="number" id="rotation" name="rotation" value="1"><br>
+      </form>
+
+      <script type="text/javascript">
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        ctx.moveTo(0,0);
+        ctx.lineTo(200,100);
+        ctx.stroke();
+        function generate(radio, rotation) {
+        }
+            //we will create a circle
+      </script>
+    </body>
+</html>
+
+<form action="#" method="get" onsubmit="genarate('hiddenField')">
+   <input type="hidden" id="hiddenField" name="hidden" value=""/>
+   <input type="submit" name="submit"/>
+</form>
+<script>
+function genarate(hiddenField){
+  var field = document.getElementById(hiddenField);
+  field.value = "new Value";
+}
+</script>
