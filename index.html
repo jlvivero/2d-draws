@@ -9,49 +9,80 @@
       </canvas>
   </head>
   <body>
+    <form action="#" method="get">
+      <label for="radio">radio: </label><br>
+      <input type="number" id="radio" name="rad" value=90><br>
+      <label for="rotation">rotation: </label><br>
+      <input type="number" id="rotation" name="rotation" value="1"><br>
+    </form>
     <script>
       var canvas = document.getElementById("myCanvas");
       var pointX = 195;
       var pointY = 150;
       var rad = 90;
+      var ctx = canvas.getContext("2d");
+      var isDrawn;
 
-      function generate(pointX,pointY,rad) {
-        var ctx = canvas.getContext("2d");
+      document.getElementById("radio").addEventListener("change", event => {
+        rad = event.srcElement.valueAsNumber;
+        if(isDrawn) {
+          clearCanv();
+          generate();
+        }
+      });
+
+      function generate() {
         ctx.beginPath();
         ctx.arc(pointX, pointY, rad, 0,2*Math.PI);
         ctx.stroke();
+        isDrawn = true;
       }
 
-      function moveRight(pointX,pointY,rad) {
-        context.clearRect(0, 0, canvas.width, canvas.height);
-        pointX++;
+      function moveRight() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pointX+=10;
         generate(pointX,pointY,rad);
       }
 
-      function moveLeft(pointX,pointY,rad) {
-        pointX--;
+      function moveLeft() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pointX-=10;
         generate(pointX,pointY,rad);
       }
 
-      function moveUp(pointX,pointY,rad) {
+      function moveUp() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pointY-=10;
+        generate(pointX,pointY,rad);
+      }
 
-        pointY--;
+      function moveDown() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        pointY+=10;
         generate(pointX,pointY,rad);
       }
 
       function clearCanv(){
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        isDrawn = false;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
       }
+
+      function changeSize(newVal){
+        rad = newVal;
+      }
+
     </script>
 
-    <button type="button" onclick=generate(pointX,pointY,rad);>Generate</button>
-    <button type="button" onclick=pointX++>Move Right</button>
-    <button type="button" onclick=pointX-->Move Left</button>
-    <button type="button" onclick=pointY-->Move Up</button>
-    <button type="button" onclick=pointY++>Move Down</button>
+    <button type="button" onclick=generate()>Generate</button>
+    <button type="button" onclick="moveRight()">Move Right</button>
+    <button type="button" onclick="moveLeft()">Move Left</button>
+    <button type="button" onclick="moveUp()">Move Up</button>
+    <button type="button" onclick="moveDown()">Move Down</button>
 
 
-    <button type="button" onclick=clearCanv();>CLEAR????</button>
+
+
+    <button type="button" onclick="clearCanv()">CLEAR????</button>
     <!-- why aint it working mmmmmmaaaaaaaaan -->
 
     <!-- first we draw a circle
